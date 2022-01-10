@@ -96,7 +96,7 @@ pub struct CoreRegs {
     ///
     /// - [`CALL_STACK_SIZE`] constant
     /// - [`CoreRegs::cp0`] register
-    cs0: Box<[LibSite; CALL_STACK_SIZE]>,
+    cs0: Vec<LibSite>,
 
     /// Defines "top" of the call stack
     cp0: u16,
@@ -139,7 +139,7 @@ impl Default for CoreRegs {
             cy0: 0,
             ca0: 0,
             cl0: None,
-            cs0: Box::new([LibSite::default(); CALL_STACK_SIZE]),
+            cs0: vec![LibSite::default(); CALL_STACK_SIZE],
             cp0: 0,
         }
     }
